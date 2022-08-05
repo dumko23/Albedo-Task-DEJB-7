@@ -1,0 +1,39 @@
+version: '3.5'
+
+services:
+  laravel-app:
+    build:
+      context: '.'
+      args:
+        uid: ${UID}
+    container_name: laravel-app
+    ports:
+      - "8000:80"
+    environment:
+      - APACHE_RUN_USER=#1000
+      - APACHE_RUN_GROUP=#1000
+    volumes:
+      - ${APP_PATH_HOST}:${APP_PATH_CONTAINER}
+      - ./local.ini:/usr/local/etc/php/conf.d/local.ini
+
+  mysql:
+    image: mysql:latest
+    ports:
+      - "3306:3306"
+    environment:
+      MYSQL_ROOT_PASSWORD: mysqlpw
+      MYSQL_DATABASE: laravel
+    volumes:
+      - ./database/mysql:/var/lib/mysql
+
+  adminer:
+    image: adminer
+    ports:
+      - "6080:8080"
+
+  npm:
+    image: node:18
+    working_dir: ${APP_PATH_CONTAINER}
+    entrypoint: ["npm"]
+    volumes:
+      - ${APP_PATH_HOST}:${APP_PATH_CONTAINER}

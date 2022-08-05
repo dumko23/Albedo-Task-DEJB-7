@@ -1,0 +1,7 @@
+.env
+
+#/Your-project-folder-name-from-APP_PATH_HOST-.env
+/database
+/www
+.idea
+/{APP_PATH_HOST}
