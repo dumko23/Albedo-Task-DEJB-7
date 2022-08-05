@@ -27,3 +27,9 @@ php artisan config:cache
 ``` 
 This will fix permission problems with your project.
 7. Your project is ready. You now can visit your project at ```localhost:8000```
+
+
+### Aditional - Xdebug
+
+
+```Xdebug``` is included into this project, you can configure your IDE to run it properly.
