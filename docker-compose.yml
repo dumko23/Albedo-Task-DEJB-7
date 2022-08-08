@@ -12,9 +12,10 @@ services:
     environment:
       - APACHE_RUN_USER=#1000
       - APACHE_RUN_GROUP=#1000
+      - PHP_IDE_CONFIG=serverName=Docker
     volumes:
       - ${APP_PATH_HOST}:${APP_PATH_CONTAINER}
-      - ./local.ini:/usr/local/etc/php/conf.d/local.ini
+      - ./xdebug.ini:/usr/local/etc/php/conf.d/xdebug.ini
 
   mysql:
     image: mysql:latest
